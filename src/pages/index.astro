@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/global.css';
+import Nav from '../components/Nav.astro';
+import Hero from '../components/Hero.astro';
+import Projects from '../components/Projects.astro';
+import Certifications from '../components/Certifications.astro';
+import About from '../components/About.astro';
+import Contact from '../components/Contact.astro';
+---
+
+<BaseLayout
+  title="Portfolio Sebastian Solares"
+  description="Full Stack Developer crafting scalable web applications with Angular, Node.js, and cloud infrastructure. Building production-grade solutions from database to deployment."
+>
+  <Nav />
+  
+  <div class="container">
+    <Hero />
+    
+    <main>
+      <Projects />
+      <Certifications />
+      <About />
+    </main>
+    
+    <Contact />
+  </div>
+
+  <script src="../scripts/interactions.ts" />
+</BaseLayout>

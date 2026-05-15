@@ -1,0 +1,30 @@
+---
+interface Certification {
+  badgeId: string;
+}
+
+const certifications: Certification[] = [
+  { badgeId: '4111f768-75dd-45dc-96bd-4508d4a5801f' },
+  { badgeId: 'c24b2d7f-542b-4414-9fcf-48205303afea' },
+  { badgeId: '2435dc76-21c0-4317-b46b-77067f0e3612' },
+];
+---
+
+<section id="certifications" class="section-certifications">
+  <div class="section-header">
+    <h2 class="section-title">Credentials</h2>
+    <p class="section-subtitle">Verified technical certifications</p>
+  </div>
+  <div class="certifications-grid">
+    {certifications.map((cert) => (
+      <div class="certification-card">
+        <div
+          data-iframe-width="220"
+          data-iframe-height="320"
+          data-share-badge-id={cert.badgeId}
+          data-share-badge-host="https://www.credly.com"
+        />
+      </div>
+    ))}
+  </div>
+</section>

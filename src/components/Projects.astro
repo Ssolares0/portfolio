@@ -1,0 +1,225 @@
+---
+interface Project {
+  index: string;
+  year: string;
+  type: string;
+  name: string;
+  description: string;
+  image: string;
+  imageAlt: string;
+  stats?: { value: string; label: string }[];
+  tech?: string[];
+  links: { label: string; url: string }[];
+}
+
+const projects: Project[] = [
+  {
+    index: '01',
+    year: '2025',
+    type: 'Fitness Platform',
+    name: 'Flex Pilates',
+    description: 'Centralized platform that modernizes the gym experience, connecting operational administration with real-time client self-management. Full-stack development including feature improvements, bug fixes, frontend and backend design, and team support throughout the project lifecycle.',
+    image: '/images/flex-pilates.png',
+    imageAlt: 'Flex Pilates - Fitness Management Platform',
+    stats: [
+      { value: 'Full Stack', label: 'End-to-End Development' },
+      { value: 'Real-time', label: 'Client Self-Management' },
+      { value: 'Admin + Client', label: 'Dual Experience' },
+    ],
+    links: [
+      { label: 'View Project', url: 'https://flexpilatesgt.com/' },
+    ],
+  },
+  {
+    index: '02',
+    year: '2026',
+    type: 'E-commerce Platform',
+    name: 'Nomade',
+    description: 'Complete e-commerce platform for UK-based essences distributor. Features intelligent multi-currency support with automatic region detection, integrated payment gateway, and organized category navigation.',
+    image: '/images/nomade.jpg',
+    imageAlt: 'Nomade - UK E-commerce Platform',
+    stats: [
+      { value: 'Multi-currency', label: 'Regional Pricing' },
+      { value: 'Payment Gateway', label: 'Secure Checkout' },
+      { value: 'UK Market', label: 'International' },
+    ],
+    links: [
+      { label: 'View Project', url: 'https://nomadessences.com' },
+    ],
+  },
+  {
+    index: '03',
+    year: '2025',
+    type: 'Web Application',
+    name: 'SaludPlus',
+    description: 'Healthcare management platform handling patient scheduling, medical records, and clinic operations. Reduced administrative overhead by 40% through automated appointment workflows and role-based access control.',
+    image: '/images/image.png',
+    imageAlt: 'SaludPlus - Healthcare Management Platform',
+    stats: [
+      { value: '40%', label: 'Time Saved' },
+      { value: 'Multi-role', label: 'Authentication' },
+      { value: 'Docker', label: 'Deployment' },
+    ],
+    tech: ['Angular', 'TypeScript', 'Node.js', 'PostgreSQL', 'Docker'],
+    links: [
+      { label: 'Live Demo', url: 'https://ssolares0.github.io/SaludPlus/' },
+      { label: 'Documentation', url: 'https://github.com/Ssolares0/SaludPlus/blob/main/docs/manuales/manual_tecnico.md' },
+      { label: 'Source Code', url: 'https://github.com/Ssolares0/SaludPlus' },
+    ],
+  },
+  {
+    index: '04',
+    year: '2024',
+    type: 'Cloud Platform',
+    name: 'EbookVault',
+    description: 'Cloud-based ebook platform inspired by Kindle. Manages digital library with AWS S3 storage, purchase workflows, and content delivery. Built scalable API handling thousands of ebook transactions.',
+    image: '/images/ebook.png',
+    imageAlt: 'EbookVault - Cloud Ebook Platform',
+    stats: [
+      { value: 'AWS S3', label: 'Storage' },
+      { value: 'REST API', label: 'Architecture' },
+      { value: 'JWT', label: 'Security' },
+    ],
+    tech: ['Node.js', 'TypeScript', 'Express', 'PostgreSQL', 'AWS S3', 'JWT'],
+    links: [
+      { label: 'Backend Source', url: 'https://github.com/Ssolares0/EbookVault-backend' },
+      { label: 'API Docs', url: 'https://github.com/Ssolares0/EbookVault-backend/blob/main/readme.md' },
+    ],
+  },
+  {
+    index: '05',
+    year: '2025',
+    type: 'Landing Page',
+    name: 'Grupo Fusión',
+    description: 'Corporate landing page for Guatemalan business group. Clean, responsive design focused on brand presentation and lead generation.',
+    image: '/images/fusion.png',
+    imageAlt: 'Grupo Fusión - Corporate Landing Page',
+    tech: ['JavaScript', 'HTML5', 'CSS3'],
+    links: [
+      { label: 'View Site', url: 'https://grupofusion.github.io/grupo_fusion/' },
+    ],
+  },
+  {
+    index: '06',
+    year: '2026',
+    type: 'Landing Page',
+    name: 'Importadora RYC',
+    description: 'Corporate landing page for vehicle importer showcasing current inventory with pricing. Designed to generate leads and provide customers with up-to-date vehicle information.',
+    image: '/images/ryc.jpg',
+    imageAlt: 'Importadora RYC - Vehicle Sales Platform',
+    tech: ['JavaScript', 'HTML5', 'CSS3'],
+    links: [
+      { label: 'View Site', url: 'https://importadora-ryc.vercel.app' },
+    ],
+  },
+];
+---
+
+<section id="work" class="section-work">
+  <div class="section-header">
+    <h2 class="section-title">Selected Work</h2>
+    <p class="section-subtitle">Production applications solving real problems</p>
+  </div>
+
+  <div class="projects-list">
+    {projects.map((project) => (
+      <article class="project-item" data-index={project.index}>
+        <div class="project-visual">
+          <div class="project-thumbnail">
+            <img
+              src={project.image}
+              alt={project.imageAlt}
+              class="project-image lazy-image"
+              loading="lazy"
+              decoding="async"
+              width="640"
+              height="400"
+            />
+          </div>
+        </div>
+        <div class="project-content">
+          <div class="project-meta">
+            <span class="project-year">{project.year}</span>
+            <span class="project-type">{project.type}</span>
+          </div>
+          <h3 class="project-name">{project.name}</h3>
+          <p class="project-description">{project.description}</p>
+          
+          {project.stats && (
+            <div class="project-stats">
+              {project.stats.map((stat) => (
+                <div class="stat-item">
+                  <span class="stat-value">{stat.value}</span>
+                  <span class="stat-label">{stat.label}</span>
+                </div>
+              ))}
+            </div>
+          )}
+          
+          {project.tech && (
+            <div class="project-tech">
+              {project.tech.map((tech) => (
+                <span class="tech-badge">{tech}</span>
+              ))}
+            </div>
+          )}
+          
+          <div class="project-links">
+            {project.links.map((link) => (
+              <a href={link.url} class="project-link" target="_blank" rel="noopener">
+                <span>{link.label}</span>
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                  <path d="M6 3H3v10h10v-3M11 3h5v5M8 8l8-8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </a>
+            ))}
+          </div>
+        </div>
+      </article>
+    ))}
+  </div>
+</section>
+
+<script>
+  const lazyImages = document.querySelectorAll('.lazy-image');
+  
+  if ('IntersectionObserver' in window) {
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const img = entry.target as HTMLImageElement;
+          const thumbnail = img.closest('.project-thumbnail');
+          
+          img.addEventListener('load', () => {
+            img.classList.add('loaded');
+            if (thumbnail) {
+              thumbnail.classList.add('loaded');
+            }
+          });
+          
+          if (img.complete) {
+            img.classList.add('loaded');
+            if (thumbnail) {
+              thumbnail.classList.add('loaded');
+            }
+          }
+          
+          observer.unobserve(img);
+        }
+      });
+    }, {
+      rootMargin: '50px 0px',
+      threshold: 0.01
+    });
+    
+    lazyImages.forEach(img => imageObserver.observe(img));
+  } else {
+    lazyImages.forEach(img => {
+      img.classList.add('loaded');
+      const thumbnail = img.closest('.project-thumbnail');
+      if (thumbnail) {
+        thumbnail.classList.add('loaded');
+      }
+    });
+  }
+</script>

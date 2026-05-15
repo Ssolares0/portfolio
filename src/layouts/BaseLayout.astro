@@ -1,0 +1,286 @@
+---
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+const canonicalURL = 'https://ssolares.vercel.app';
+const ogImage = 'https://ssolares.vercel.app/images/memoji.png';
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Sebastian Solares",
+  "alternateName": "Marco Sebastian Solares España",
+  "url": "https://ssolares0.github.io/",
+  "image": "https://ssolares0.github.io/images/memoji.png",
+  "jobTitle": "Full Stack Developer",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Freelance"
+  },
+  "alumniOf": {
+    "@type": "EducationalOrganization",
+    "name": "Universidad de San Carlos de Guatemala",
+    "sameAs": "https://www.usac.edu.gt/"
+  },
+  "knowsAbout": [
+    "Angular",
+    "Node.js",
+    "TypeScript",
+    "JavaScript",
+    "React",
+    "PostgreSQL",
+    "Docker",
+    "AWS",
+    "Cloud Architecture",
+    "Web Development",
+    "Golang",
+    "Full Stack Development"
+  ],
+  "sameAs": [
+    "https://github.com/Ssolares0",
+    "https://linkedin.com/in/marco-sebastian-solares-españa-1215ab22a"
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "email": "sebastiansolares2001@gmail.com",
+    "contactType": "Professional"
+  }
+};
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-site-verification" content="_lhbeFmJP-nsaHWmXTZk7Hni4RWfEDGGPgurE4rMWYQ" />
+  
+  <title>{title}</title>
+  <meta name="title" content={title} />
+  <meta name="description" content={description} />
+  <meta name="keywords" content="Full Stack Developer, Angular Developer, Node.js, TypeScript, Cloud Architecture, Web Development, Guatemala, Software Engineer" />
+  <meta name="author" content="Sebastian Solares" />
+  <meta name="robots" content="index, follow" />
+  <meta name="language" content="English" />
+  
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={canonicalURL} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={ogImage} />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:site_name" content="Sebastian Solares Portfolio" />
+  
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content={canonicalURL} />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImage} />
+  <meta name="twitter:creator" content="@ssolares0" />
+  
+  <link rel="canonical" href={canonicalURL} />
+  <meta name="theme-color" content="#0a0e14" />
+  
+  <link rel="icon" type="image/png" href="/images/memoji.png" />
+  <link rel="apple-touch-icon" href="/images/memoji.png" />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://cdn.credly.com" />
+  
+  <link rel="preload" href="https://fonts.gstatic.com/s/syne/v22/8vIS7w4qzmVxsWxjBZRjr0FKM_0kPvU.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="https://fonts.gstatic.com/s/spacegrotesk/v16/V8mQoQDjQSkFtoMM3T6r8E7mF71Q-gOoraIAEj7oUXskPMBBSSJLm2E.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="https://fonts.gstatic.com/s/dmsans/v14/rP2Hp2ywxg089UriCZ2IHSeH.woff2" as="font" type="font/woff2" crossorigin />
+  
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=DM+Sans:wght@400;500;600&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet" />
+  
+  <style is:global>
+    :root {
+      --ink-primary: #060a14;
+      --ink-secondary: #151920;
+      --ink-tertiary: #1f2429;
+      
+      --surface-base: #060a14;
+      --surface-raised: #151920;
+      --surface-overlay: #1f2429;
+      --surface-elevated: #252b33;
+      
+      --text-primary: #e6edf3;
+      --text-secondary: #8b949e;
+      --text-tertiary: #6e7681;
+      --text-muted: #484f58;
+      
+      --border-subtle: rgba(139, 148, 158, 0.12);
+      --border-default: rgba(139, 148, 158, 0.24);
+      --border-emphasis: rgba(139, 148, 158, 0.4);
+      
+      --accent-teal: #14b8a6;
+      --accent-teal-bright: #2dd4bf;
+      --accent-teal-dim: #0d9488;
+      
+      --accent-amber: #f59e0b;
+      --accent-amber-bright: #fbbf24;
+      
+      --semantic-success: #22c55e;
+      --semantic-warning: #f59e0b;
+      --semantic-error: #ef4444;
+      
+      --font-display: 'Syne', system-ui, sans-serif;
+      --font-display-alt: 'Space Grotesk', system-ui, sans-serif;
+      --font-body: 'DM Sans', system-ui, sans-serif;
+      --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
+      
+      --space-1: 0.25rem;
+      --space-2: 0.5rem;
+      --space-3: 0.75rem;
+      --space-4: 1rem;
+      --space-5: 1.25rem;
+      --space-6: 1.5rem;
+      --space-8: 2rem;
+      --space-10: 2.5rem;
+      --space-12: 3rem;
+      --space-16: 4rem;
+      --space-20: 5rem;
+      --space-24: 6rem;
+      
+      --radius-sm: 4px;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+      --radius-xl: 16px;
+      
+      --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-slow: 400ms cubic-bezier(0.4, 0, 0.2, 1);
+      
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -2px rgba(0, 0, 0, 0.3);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -4px rgba(0, 0, 0, 0.3);
+      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--text-primary);
+      background: var(--surface-base);
+      line-height: 1.6;
+      font-size: 16px;
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    @media (hover: none) {
+      body {
+        cursor: auto;
+      }
+    }
+
+    img, picture, video, canvas, svg {
+      display: block;
+      max-width: 100%;
+    }
+
+    input, button, textarea, select {
+      font: inherit;
+    }
+
+    p, h1, h2, h3, h4, h5, h6 {
+      overflow-wrap: break-word;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      cursor: none;
+    }
+
+    @media (hover: none) {
+      a {
+        cursor: pointer;
+      }
+    }
+
+    ::-webkit-scrollbar {
+      width: 10px;
+      height: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--surface-base);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--surface-elevated);
+      border-radius: var(--radius-sm);
+      border: 2px solid var(--surface-base);
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--text-muted);
+    }
+
+    ::selection {
+      background: rgba(20, 184, 166, 0.3);
+      color: var(--text-primary);
+    }
+
+    ::-moz-selection {
+      background: rgba(20, 184, 166, 0.3);
+      color: var(--text-primary);
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes shimmer {
+      0% {
+        background-position: -200% 0;
+      }
+      100% {
+        background-position: 200% 0;
+      }
+    }
+  </style>
+  
+  <slot name="styles" />
+</head>
+<body>
+  <div class="scroll-progress-bar"></div>
+  <div class="ambient-bg"></div>
+  <div class="cursor-glow"></div>
+
+  <slot />
+
+  <script async src="https://cdn.credly.com/assets/utilities/embed.js"></script>
+  <script is:inline src="/_vercel/insights/script.js"></script>
+  
+  <script type="application/ld+json" is:raw>{JSON.stringify(structuredData)}</script>
+</body>
+</html>

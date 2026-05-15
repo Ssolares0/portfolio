@@ -1,0 +1,73 @@
+---
+---
+
+<nav class="main-nav" role="navigation">
+  <div class="nav-inner">
+    <div class="nav-brand">
+      <img src="/images/memoji.png" alt="Sebastian Solares" class="nav-memoji" width="44" height="44" />
+    </div>
+    
+    <button class="hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
+    
+    <div class="nav-links">
+      <a href="#work" class="nav-link" data-text="Work">Work</a>
+      <a href="#certifications" class="nav-link" data-text="Credentials">Credentials</a>
+      <a href="#about" class="nav-link" data-text="About">About</a>
+      <a href="#contact" class="nav-link contact-cta" data-text="Contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<script>
+  const hamburger = document.querySelector('.hamburger');
+  const navLinks = document.querySelector('.nav-links');
+  const navLinkItems = document.querySelectorAll('.nav-link');
+
+  if (hamburger && navLinks) {
+    hamburger.addEventListener('click', () => {
+      const isActive = hamburger.classList.contains('active');
+      if (isActive) {
+        hamburger.classList.remove('active');
+        navLinks.classList.remove('active');
+        hamburger.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      } else {
+        hamburger.classList.add('active');
+        navLinks.classList.add('active');
+        hamburger.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+      }
+    });
+
+    navLinkItems.forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navLinks.classList.remove('active');
+        hamburger.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      });
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
+        hamburger.classList.remove('active');
+        navLinks.classList.remove('active');
+        hamburger.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        hamburger.classList.remove('active');
+        navLinks.classList.remove('active');
+        hamburger.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+    });
+  }
+</script>

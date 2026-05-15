@@ -1,0 +1,94 @@
+---
+interface SkillGroup {
+  category: string;
+  skills: { name: string; level: string; progress: number }[];
+}
+
+const skillGroups: SkillGroup[] = [
+  {
+    category: 'Frontend',
+    skills: [
+      { name: 'Angular', level: 'Advanced', progress: 90 },
+      { name: 'React', level: 'Intermediate', progress: 75 },
+      { name: 'JavaScript ES6+', level: 'Advanced', progress: 90 },
+      { name: 'HTML5 & CSS3', level: 'Advanced', progress: 85 },
+    ],
+  },
+  {
+    category: 'Backend',
+    skills: [
+      { name: 'Node.js', level: 'Advanced', progress: 88 },
+      { name: 'TypeScript', level: 'Advanced', progress: 85 },
+      { name: 'Express', level: 'Advanced', progress: 80 },
+      { name: 'Golang', level: 'Intermediate', progress: 65 },
+      { name: 'REST APIs', level: 'Advanced', progress: 90 },
+      { name: 'PostgreSQL', level: 'Intermediate', progress: 75 },
+    ],
+  },
+  {
+    category: 'DevOps',
+    skills: [
+      { name: 'Docker', level: 'Intermediate', progress: 75 },
+      { name: 'AWS S3', level: 'Intermediate', progress: 70 },
+      { name: 'Git', level: 'Advanced', progress: 85 },
+      { name: 'CI/CD', level: 'Intermediate', progress: 70 },
+    ],
+  },
+];
+---
+
+<section id="about" class="section-about">
+  <div class="about-content">
+    <div class="about-text">
+      <h2 class="section-title">About</h2>
+      <p class="about-paragraph">
+        Currently in my 10th semester studying Computer Science and Systems Engineering at 
+        Universidad de San Carlos de Guatemala. I focus on building production-grade web applications 
+        with modern JavaScript frameworks and cloud infrastructure.
+      </p>
+      <p class="about-paragraph">
+        My work centers on creating scalable systems that solve real business problems—from 
+        healthcare management platforms to cloud-based content delivery. I'm particularly 
+        interested in TypeScript ecosystems, database design, and deployment automation.
+      </p>
+    </div>
+    <div class="about-skills">
+      {skillGroups.map((group) => (
+        <div class="skill-group">
+          <h3 class="skill-category">{group.category}</h3>
+          <div class="skill-list">
+            {group.skills.map((skill) => (
+              <div class="skill-item">
+                <div class="skill-header">
+                  <span class="skill-name">{skill.name}</span>
+                  <span class="skill-level">{skill.level}</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress" data-progress={skill.progress} style={`--progress-width: ${skill.progress}%`} />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  const skillProgress = document.querySelectorAll('.skill-progress');
+  
+  if (skillProgress.length > 0) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
+          entry.target.classList.add('animated');
+        }
+      });
+    }, {
+      threshold: 0.5,
+    });
+    
+    skillProgress.forEach(bar => observer.observe(bar));
+  }
+</script>
